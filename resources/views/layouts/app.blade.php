@@ -49,6 +49,11 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/TweenMax.min.js') }}"></script>
     <script src="{{ asset('js/notifications.js') }}"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
     @yield('scripts')
 </body>
 </html>

@@ -39,6 +39,18 @@
                 </form>
             </div>
         </div>
+
+        <div class="fixed-bottom">
+            <div class="row">
+                <div class="col-12 text-right">
+                    <h1 class="mx-4 my-4">
+                        <span data-toggle="tooltip" data-placement="left" title="¿Problemas para iniciar sesión?">
+                            <i class="fas fa-question question-icon"></i>
+                        </span>
+                    </h1>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
