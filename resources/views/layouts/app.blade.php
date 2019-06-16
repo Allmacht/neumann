@@ -40,6 +40,7 @@
             @yield('content')
         </main>
          
+        @include('errors.Notifications')
     </div>
 
 
@@ -47,6 +48,7 @@
     <script src="{{ asset('js/popper.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/TweenMax.min.js') }}"></script>
+    <script src="{{ asset('js/notifications.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

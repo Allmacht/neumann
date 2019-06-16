@@ -6,14 +6,14 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 div-1 px-0 shadow">
-                <div class="col-xl-5 col-lg-6 col-md-12 float-left div-left text-center">
+            <div class="col-12 div-1 px-0">
+                <div class="col-xl-5 col-lg-6 col-md-12 float-left div-left text-center shadow" id="divLeft">
                     <img src="{{ asset('images/project.png') }}" class="img-fluid mt-2" width="350px">
                     <h1 class="text-logo text-truncate">N<strong>e</strong>umann</h1>
                 </div>
                 <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <div class="col-xl-7 col-lg-6 col-md-12 float-right div-right py-4 arrow_box">
+                    <div class="col-xl-7 col-lg-6 col-md-12 float-right div-right py-4 arrow_box shadow" id="divRight">
 
                         <h1 class="text-center text-form-title mt4">{{ __('Iniciar sesión') }}</h1>
 
@@ -40,4 +40,5 @@
             </div>
         </div>
     </div>
+
 @endsection
