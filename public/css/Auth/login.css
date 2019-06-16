@@ -1,0 +1,126 @@
+
+.div-1{
+    margin-top: 140px;
+    border-radius: 10px;
+}
+body{
+    background-color: #f9f9f9;
+}
+.div-left{
+    background-color: #1A2B63;
+    color: white;;
+    height: 450px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    
+}
+.div-right{
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 450px;
+    border-style: solid;
+    border-color: #1A2B63;
+}
+.text-logo{
+    color: white;
+    font-size: 60px;
+    font-family: 'Poiret One',
+    cursive;
+    cursor: default;
+    text-shadow: 2px 2px #000000;
+}
+.text-form-title{
+    font-family: 'Poiret One',
+    cursive;
+}
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+}
+
+.btn-submit{
+    background-color: #1A2B63;
+    color: white;
+    transition: 0.5s;
+}
+
+.btn-submit:hover{
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+    border-color: #1A2B63;
+}
+
+.btn-submit:hover > .icon-btn{
+    color: green;
+}
+
+.img-fluid{
+    pointer-events: none;
+    cursor: default;
+}
+
+.btn-request{
+    color: #1A2B63;
+}
+
+@media(min-width:992px){
+    .arrow_box:after,
+    .arrow_box:before {
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-right-color: #ffffff;
+        border-width: 30px;
+        margin-top: -30px;
+    }
+
+    .arrow_box:before {
+        border-color: rgba(255, 255, 255, 0);
+        border-right-color: #ffffff;
+        border-width: 36px;
+        margin-top: -36px;
+    }
+    .mt4 {
+        margin-top: 40px;
+    }
+    .margin-elements{
+        margin-top: 20px;
+    }
+    .div-right{
+        border-left: none;
+    }
+}
+
+@media(max-width: 991px){
+    .img-fluid{
+        width: 150px;
+    }
+    .div-left{
+        height: 230px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    .div-1{
+        margin-top: 0px;
+    }
+    .text-logo{
+        font-size: 40px;
+    }
+    .div-right{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        height: 300px;
+    }
+}

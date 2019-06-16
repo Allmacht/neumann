@@ -1,73 +1,43 @@
 @extends('layouts.app')
-
+@section('title', 'Iniciar sesión')
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/Auth/login.css') }}">
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 div-1 px-0 shadow">
+                <div class="col-xl-5 col-lg-6 col-md-12 float-left div-left text-center">
+                    <img src="{{ asset('images/project.png') }}" class="img-fluid mt-2" width="350px">
+                    <h1 class="text-logo text-truncate">N<strong>e</strong>umann</h1>
                 </div>
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <div class="col-xl-7 col-lg-6 col-md-12 float-right div-right py-4 arrow_box">
+
+                        <h1 class="text-center text-form-title mt4">{{ __('Iniciar sesión') }}</h1>
+
+                        <div class="form-group col-xl-10 col-lg-11 col-md-12 col-sm-12 mx-auto margin-elements">
+                            <input type="email" class="form-control rounded-pill @error('email') is-invalid @enderror shadow" name="email" placeholder="Ingrese tu email" required>
+                        </div>
+
+                        <div class="form-group col-xl-10 col-lg-11 col-md-12 col-sm-12 mx-auto margin-elements">
+                            <input type="password" class="form-control rounded-pill @error('email') is-invalid @enderror shadow" name="password" placeholder="Ingrese su contraseña" required>
+                        </div>
+
+                        <div class="col-xl-10 col-lg-11 col-md-12 mx-auto margin-elements text-center">
+                            <button class="btn btn-block btn-submit rounded-pill shadow mb-3" type="submit">
+                                <i class="fas fa-check icon-btn"></i>
+                                {{ __('Entrar') }}
+                            </button>
+                            
+                            <a href="{{ route('password.request') }}" class="btn-link text-decoration-none btn-request">
+                                {{ __('¿Ha olvidado su contraseña?') }}
+                            </a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
