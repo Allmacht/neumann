@@ -8,7 +8,7 @@ body{
 }
 .div-left{
     background-color: #1A2B63;
-    color: white;;
+    color: white;
     height: 450px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -71,7 +71,7 @@ body{
     transition: 0.3s;
 }
 .question-icon:hover{
-    font-size: 50px;
+    font-size: 40px;
     transform: rotate(20deg);
 }
 
@@ -82,6 +82,11 @@ body{
 .close1:hover{
     color:white;
 }
+
+.fixed-bottom-div{
+    height: 50px;
+}
+
 @media(min-width:992px){
     .arrow_box:after,
     .arrow_box:before {

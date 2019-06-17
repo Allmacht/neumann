@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12 div-1 px-0">
                 <div class="col-xl-5 col-lg-6 col-md-12 float-left div-left text-center shadow" id="divLeft">
-                    <img src="{{ asset('images/project.png') }}" class="img-fluid mt-2" width="350px">
+                    <img src="{{ asset('images/project.png') }}" class="img-fluid mt-3" width="350px">
                     <h1 class="text-logo text-truncate">N<strong>e</strong>umann</h1>
                 </div>
                 <form action="{{ route('login') }}" method="post">
@@ -35,22 +35,22 @@
                                 {{ __('¿Ha olvidado su contraseña?') }}
                             </a>
                         </div>
+                        <div class="fixed-bottom-div pt-3">
+                            <div class="col-12 text-right mt-5">
+                                <h3>
+                                    <span data-toggle="tooltip" data-placement="left" title="¿Problemas para iniciar sesión?">
+                                        <i class="fas fa-question question-icon" data-toggle="modal" data-target="#modalMessage"></i>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
                     </div>
                 </form>
+                
             </div>
         </div>
 
-        <div class="fixed-bottom">
-            <div class="row">
-                <div class="col-12 text-right">
-                    <h1 class="mx-4 my-4">
-                        <span data-toggle="tooltip" data-placement="left" title="¿Problemas para iniciar sesión?">
-                            <i class="fas fa-question question-icon" data-toggle="modal" data-target="#modalMessage"></i>
-                        </span>
-                    </h1>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     @include('auth/ModalMessage')
