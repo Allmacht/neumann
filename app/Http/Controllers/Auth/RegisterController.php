@@ -105,7 +105,7 @@ class RegisterController extends Controller
         if(isset($data['teacher'])){
             $user->assignRole('Docente');
         }else{
-            $user->assignRole('Alumno');
+            $user->assignRole('Estudiante');
         }
 
         return $user;
