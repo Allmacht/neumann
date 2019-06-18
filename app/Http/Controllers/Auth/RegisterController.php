@@ -106,6 +106,8 @@ class RegisterController extends Controller
             $user->assignRole('Docente');
         }else{
             $user->assignRole('Estudiante');
+            $user->authorized = true;
+            $user->save();
         }
 
         return $user;
