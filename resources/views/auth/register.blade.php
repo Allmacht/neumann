@@ -55,7 +55,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 custom-control custom-switch text-center py-1">
                             <hr>
                             <input type="checkbox" class="custom-control-input" name="teacher" id="teacher">
-                            <label for="teacher" class="custom-control-label">{{ __('Soy profesor') }}</label>
+                            <label for="teacher" class="custom-control-label">{{ __('Soy docente') }}</label>
                             <span data-toggle="tooltip" data-placement="right" title="Al crear una cuenta como profesor, esta deberá ser verificada por el administrador.">
                                 <i class="fas fa-question-circle text-primary" ></i>
                             </span>
