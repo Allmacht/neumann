@@ -19,27 +19,27 @@
                     <div class="col-12 div-form form-row form-row-div pt-4">
                         <div class="form-group col-xl-4 col-lg-6 col-md-6 col-sm-12">
                             <label for="names">{{ __('Nombre(s)') }}</label>
-                            <input type="text" class="form-control shadow" name="names" required placeholder="Ingresa tu(s) nombre(s)" autofocus>
+                        <input type="text" class="form-control shadow" name="names" required placeholder="Ingresa tu(s) nombre(s)" autofocus value="{{old('names')}}">
                         </div>
                         <div class="form-group col-xl-4 col-lg-6 col-md-6 col-sm-12">
                             <label for="paternal_surname">{{ __('Apellido paterno') }}</label>
-                            <input type="text" class="form-control shadow" name="paternal_surname" required placeholder="Ingresa tu apellido paterno">
+                            <input type="text" class="form-control shadow" name="paternal_surname" required placeholder="Ingresa tu apellido paterno" value="{{old('paternal_surname')}}">
                         </div>
                         <div class="from-group col-xl-4 col-lg-6 col-md-6 col-sm-12">
                             <label for="maternal_surname">{{ __('Apellido materno') }}</label>
-                            <input type="text" class="form-control shadow" name="maternal_surname" required placeholder="Ingresa tu apellido materno">
+                            <input type="text" class="form-control shadow" name="maternal_surname" required placeholder="Ingresa tu apellido materno" value="{{old('maternal_surname')}}">
                         </div>
                         <div class="form-group col-xl-4 col-lg-6 col-md-6 col-sm-12">
                             <label for="enrollment">{{__('Matrícula (opcional)')}}</label>
-                            <input type="text" class="form-control shadow @error('enrollment') is-invalid @enderror" name="enrollment" placeholder="Ingresa tu matrícula (opcional)">
+                            <input type="text" class="form-control shadow @error('enrollment') is-invalid @enderror" name="enrollment" placeholder="Ingresa tu matrícula (opcional)" value="{{old('enrollment')}}>
                         </div>
                         <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                             <label for="name">{{ __('Nombre de usuario') }}</label>
-                            <input type="text" class="form-control shadow @error('name') is-invalid @enderror" name="name" required placeholder="Ingresa tu nombre de usuario">
+                            <input type="text" class="form-control shadow @error('name') is-invalid @enderror" name="name" required placeholder="Ingresa tu nombre de usuario" value="{{old('name')}}>
                         </div>
                         <div class="form-group col-xl-5 col-lg-6 col-md-6 col-sm-12">
                             <label for="email">{{ __('Correo electónico') }}</label>
-                            <input type="email" class="form-control shadow @error('email') is-invalid @enderror" name="email" required placeholder="Ingresa tu correo electrónico">
+                            <input type="email" class="form-control shadow @error('email') is-invalid @enderror" name="email" required placeholder="Ingresa tu correo electrónico" value="{{old('email')}}>
                         </div>
                         <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <label for="password">{{ __('Contraseña') }}</label>
