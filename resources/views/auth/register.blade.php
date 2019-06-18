@@ -31,15 +31,15 @@
                         </div>
                         <div class="form-group col-xl-4 col-lg-6 col-md-6 col-sm-12">
                             <label for="enrollment">{{__('Matrícula (opcional)')}}</label>
-                            <input type="text" class="form-control shadow @error('enrollment') is-invalid @enderror" name="enrollment" placeholder="Ingresa tu matrícula (opcional)" value="{{old('enrollment')}}>
+                            <input type="text" class="form-control shadow @error('enrollment') is-invalid @enderror" name="enrollment" placeholder="Ingresa tu matrícula (opcional)" value="{{old('enrollment')}}">
                         </div>
                         <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                             <label for="name">{{ __('Nombre de usuario') }}</label>
-                            <input type="text" class="form-control shadow @error('name') is-invalid @enderror" name="name" required placeholder="Ingresa tu nombre de usuario" value="{{old('name')}}>
+                            <input type="text" class="form-control shadow @error('name') is-invalid @enderror" name="name" required placeholder="Ingresa tu nombre de usuario" value="{{old('name')}}">
                         </div>
                         <div class="form-group col-xl-5 col-lg-6 col-md-6 col-sm-12">
                             <label for="email">{{ __('Correo electónico') }}</label>
-                            <input type="email" class="form-control shadow @error('email') is-invalid @enderror" name="email" required placeholder="Ingresa tu correo electrónico" value="{{old('email')}}>
+                            <input type="email" class="form-control shadow @error('email') is-invalid @enderror" name="email" required placeholder="Ingresa tu correo electrónico" value="{{old('email')}}">
                         </div>
                         <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <label for="password">{{ __('Contraseña') }}</label>
