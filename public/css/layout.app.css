@@ -1,0 +1,22 @@
+@media(min-width:768px){
+    .btn-login{
+        border-top-left-radius: 50rem !important;
+        border-bottom-left-radius: 50rem !important;
+        border-top-right-radius: none !important;
+        border-bottom-right-radius: none !important; 
+    }
+    .btn-register{
+        border-top-right-radius: 50rem !important;
+        border-bottom-right-radius: 50rem !important;
+        border-top-left-radius: none !important;
+        border-bottom-left-radius: none !important;
+    }
+}
+@media(max-width:991px){
+    .btn-login, .btn-register{
+        margin-top: 5px;
+        margin-bottom: 5px; 
+        display: block;
+        width: 100%;
+    }
+}

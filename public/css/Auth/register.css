@@ -1,0 +1,49 @@
+body{
+    background-color: #f9f9f9;
+}
+.img-fluid{
+    width: 50px;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.text-header{
+    color: white;
+    font-size: 50px;
+    font-family: 'Poiret One',
+    cursive;
+    cursor: default;
+    text-shadow: 2px 2px #000000;
+}
+.div-header{
+    background-color: #1A2B63;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.div-form{
+    background-color: white;
+    border-style: solid;    
+    border-color: #1A2B63;
+    border-top: none; 
+}
+.form-row-div{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.shadow-div{
+    transition: 0.5s;
+}
+.shadow-div:hover{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    
+}
+@media(min-width:992px){
+    .div-header {
+        margin-top: 100px;
+    }
+}
+@media(max-width:991px){
+    .text-header{
+        font-size: 30px;
+    }
+}
