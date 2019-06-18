@@ -49,9 +49,38 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required','unique:users','string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'names' => ['required','string','max:60'],
+            'paternal_surname' => ['required','string','max:60'],
+            'maternal_surname' => ['required','string','max:60'],
+            'enrollment' => ['nullable','unique:users','max:100'],
+        ],[
+            'name.required' => 'El nombre de usuario es requerido',
+            'name.unique' => 'El nombre de usuario ya está en uso',
+            'name.max' => 'El nombre de usuario debe ser menor a 20 caracteres',
+
+            'email.required' => 'El email es requerido',
+            'email.email' => 'El email ingresado no es válido',
+            'email.max' => 'La longitud del email debe ser menor a 255 caracteres',
+            'email.unique' => 'El email ingresado ya está en uso',
+
+            'password.required' => 'La contraseña es requerida',
+            'password.min' => 'La longitud de la contraseña debe ser mínimo de 8 caracteres',
+            'password.confirmed' => 'La confirmación de la contraseña no coincide',
+            
+            'names.required' => 'El nombre personal es requerido',
+            'names.max' => 'La longitud del nombre personal debe ser menor a 60 caracteres',
+            
+            'paternal_surname.required' => 'El apellido paterno es requerido',
+            'paternal_surname.max' => 'La longuitud del apellido paterno debe ser menor a 60 caracteres',
+
+            'maternal_surname.required' => 'El apellido materno es requerido',
+            'maternal_surname.max' => 'La longuitud del apellido materno debe ser menor a 60 caracteres',
+
+            'enrollment.unique' => 'El número de matrícula ya está en uso',
+            'enrollment.max' => 'La longuitud de la matrícula debe ser menor a 100 caracteres'
         ]);
     }
 
@@ -63,10 +92,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'names' => $data['names'],
+            'paternal_surname' => $data['paternal_surname'],
+            'maternal_surname' => $data['maternal_surname'],
+            'enrollment' => $data['enrollment']
         ]);
+
+        if(isset($data['teacher'])){
+            
+        }
     }
 }
