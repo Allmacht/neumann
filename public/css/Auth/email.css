@@ -1,17 +1,22 @@
+
+.fixed-top-login{
+    background-color: #f9f9f9;
+}
 body{
     background-color: #f9f9f9;
 }
 .text-header{
     font-family: 'Poiret One', cursive;
+    color: #1A2B63;
 }
 .div-1{
     background-color: white;
     border-radius: 10px;
 }
 
-@media(min-width: 768px){
+@media(min-width: 1200px){
     .div-1{
-        margin-top: 120px;
+        margin-top: 5ch;
     }
     .padding-text{
         padding-left: 150px;
