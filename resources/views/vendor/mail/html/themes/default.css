@@ -107,14 +107,18 @@ img {
 .header {
     padding: 25px 0;
     text-align: center;
+    background-color: #1A2B63;
+    font-family: 'Poiret One', cursive;
+    
 }
 
 .header a {
-    color: #bbbfc3;
-    font-size: 19px;
+    color: #ffffff;
+    font-size: 30px;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 0 1px 0 white;
+    text-shadow: 2px 2px #000000;
+    font-family: 'Poiret One', cursive;
 }
 
 /* Body */
@@ -154,11 +158,14 @@ img {
 }
 
 /* Footer */
-
+.tr-footer{
+    background-color: #1A2B63;
+}
 .footer {
     margin: 0 auto;
     padding: 0;
     text-align: center;
+    background-color: #1A2B63;
     width: 570px;
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
@@ -166,7 +173,7 @@ img {
 }
 
 .footer p {
-    color: #aeaeae;
+    color: #ffffff;
     font-size: 12px;
     text-align: center;
 }
