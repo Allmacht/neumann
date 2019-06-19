@@ -39,7 +39,7 @@ body{
 }
 @media(min-width:992px){
     .div-header {
-        margin-top: 100px;
+        margin-top: 5ch;
     }
 }
 @media(max-width:991px){
