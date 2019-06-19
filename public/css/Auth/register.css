@@ -1,3 +1,6 @@
+.fixed-top-login {
+    background-color: #f9f9f9;
+}
 body{
     background-color: #f9f9f9;
     margin-bottom: 100px;
@@ -40,7 +43,7 @@ body{
 }
 @media(min-width:992px){
     .div-header {
-        margin-top: 5ch;
+        margin-top: 2ch;
     }
 }
 @media(max-width:991px){
