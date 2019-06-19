@@ -16,7 +16,10 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light fixed-top-login" style="background-color: transparent;">
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent">
+            <a href="{{ url('/') }}" class="navbar-brand navbar-text">
+                <strong>Neumann</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
