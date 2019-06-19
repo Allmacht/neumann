@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light fixed-top-login sticky-top shadow" style="height: 60px;">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top-login sticky-top" style="height: 60px;">
             <a href="{{ url('/') }}" class="navbar-brand navbar-text">
                 <strong>Neumann</strong>
             </a>
