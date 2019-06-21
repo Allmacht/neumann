@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illumiante\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class LoginController extends Controller
@@ -43,7 +43,7 @@ class LoginController extends Controller
     public function login(Request $request){
         $email = $request->email;
         $password = $request->password;
-        
+
         $user = User::whereEmail($email)->value('status');
         if(is_null($user)):
             return redirect()->route('login')->withErrors(['email'=>'Usuario y/o contraseña incorrectos']);
