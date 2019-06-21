@@ -30,7 +30,7 @@
                     <h5 class="alert-heading align-middle">
                         <strong>Correcto</strong>
                     </h5>
-                    <p class="text-truncate">{{ session('status') }}</p>
+                    <p class="">{{ session('status') }}</p>
                 </div>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
