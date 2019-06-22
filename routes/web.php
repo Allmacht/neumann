@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//Ruta para verificación de cuentas como docente
+Route::get('/verifyAccount','Auth\VerificationController@teachers')->middleware('verified')->name('CheckTeacher');
+Route::get('/home', 'HomeController@index')->name('home')->middleware(['verified','CheckTeacher']);
