@@ -13,13 +13,13 @@ class RolesSeeder extends Seeder
     public function run()
     {
         $SAdministrador = Role::create([
-            'name' => 'SAdministrador',
+            'name' => 'super-admin',
         ]);
 
         $Administrador = Role::create([
             'name' => 'Administrador',
         ]);
-        
+
         $Docente = Role::create([
             'name' => 'Docente',
         ]);
