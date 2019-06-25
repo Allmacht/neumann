@@ -93,7 +93,7 @@
         <div id="sidenav" class="sidenav shadow">
             <!--Botones del sideNav-->
 
-            <a href="{{route('home')}}" class="btn btn-link btn-block mt-2 active-nav">
+            <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
               <div class="mb-4">
                 <div class="float-left text-truncate w-25 text-center">
                     <i class="far fa-home icon-menu"></i>
@@ -103,14 +103,14 @@
                 </div>
               </div>
             </a>
-
-            <a href="{{route('home')}}" class="btn btn-link btn-block mt-2">
+            
+            <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
               <div class="mb-4">
                 <div class="float-left text-truncate w-25 text-center">
-                    <i class="far fa-home icon-menu"></i>
+                    <i class="far fa-building icon-menu"></i>
                 </div>
                 <div class="float-right text-truncate w-75 text-center">
-                    <span>{{__('Inicio')}}</span>
+                    <span>{{__('Planteles')}}</span>
                 </div>
               </div>
             </a>
