@@ -1,4 +1,4 @@
-<div class="container-fluid fixed-top container-errors" style="margin-top: 70px">
+<div class="container-fluid fixed-top container-errors" style="margin-top: 80px; z-index: 0 !important">
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="row mx-2">
