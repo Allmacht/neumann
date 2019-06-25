@@ -103,7 +103,7 @@
                 </div>
               </div>
             </a>
-            
+
             <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
               <div class="mb-4">
                 <div class="float-left text-truncate w-25 text-center">
@@ -126,11 +126,9 @@
             @yield('content')
         </main>
 
-        @if ($errors->any() || session('status'))
-          @include('errors.Notifications')
-        @endif
-
     </div>
+
+    @include('errors.Notifications')
 
 
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
