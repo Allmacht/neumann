@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/layout.app.css') }}">
     <script src="{{ asset('js/fontawesome.js') }}"></script>
     @yield('styles')
@@ -120,7 +121,7 @@
         <div id="sidenav" class="sidenav shadow">
             <!--Botones del sideNav-->
 
-            <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
+            <a href="{{route('home')}}" class="btn btn-link btn-block py-3 @yield('home')">
                 <div class="mb-4">
                     <div class="float-left text-truncate w-25 text-center">
                         <i class="far fa-home icon-menu"></i>
@@ -130,17 +131,18 @@
                     </div>
                 </div>
             </a>
-
-            <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
-                <div class="mb-4">
-                    <div class="float-left text-truncate w-25 text-center">
-                        <i class="far fa-building icon-menu"></i>
+            @hasanyrole('super-admin|Administrador|Coordinador')
+                <a href="{{route('campuses.index')}}" class="btn btn-link btn-block py-3 @yield('campuses')">
+                    <div class="mb-4">
+                        <div class="float-left text-truncate w-25 text-center">
+                            <i class="far fa-building icon-menu"></i>
+                        </div>
+                        <div class="float-right text-truncate w-75 text-center">
+                            <span>{{__('Planteles')}}</span>
+                        </div>
                     </div>
-                    <div class="float-right text-truncate w-75 text-center">
-                        <span>{{__('Planteles')}}</span>
-                    </div>
-                </div>
-            </a>
+                </a>
+            @endhasanyrole
 
             <!--Fin botones del sideNav-->
         </div>

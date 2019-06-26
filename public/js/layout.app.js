@@ -13,7 +13,7 @@ $(document).ready(function(){
         }else {
           $('#sidenav').width(250);
           if(window.matchMedia("(min-width:991px)").matches){
-            $('#main').css("margin-left", 255);
+            $('#main').css("margin-left", 250);
           }
         }
     });
