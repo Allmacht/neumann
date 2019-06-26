@@ -48,18 +48,18 @@
                 </a>
             </div>
             <ul class="navbar-nav mr-auto ml-3">
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menú">
-                <i id="btn-sidenav-toggle" class="far fa-ellipsis-v fa-2x btn-sidenav-toggle"></i>
-              </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menú">
+                    <i id="btn-sidenav-toggle" class="far fa-ellipsis-v fa-2x btn-sidenav-toggle"></i>
+                </li>
             </ul>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLoginContent" aria-controls="navbarLoginContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarLoginContent">
-              <ul class="navbar-nav mr-auto ml-3">
+                <ul class="navbar-nav mr-auto ml-3">
 
-              </ul>
+                </ul>
                 <ul class="navbar-nav ml-auto mr-2">
                     <li class="nav-item dropdown align-center-margin">
                         <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
@@ -74,16 +74,43 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="user-info" role="button" data-toggle="dropdown">
                             <!--Cambiar a imagen de usuario-->
-                            <img src="{{asset('images/user.png')}}" class="img-fluid user-image">
+                            <img src="{{asset('images/user.png')}}" class="img-fluid rounded-circle user-image">
+
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <form action="{{route('logout')}}" method="post">
-                            @csrf
-                            <button type="submit" class="dropdown-item">
-                              {{__('Cerrar sesión')}}
-                            </button>
-                          </form>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-user py-0">
+                            <!--Dropdown de usuario-->
+                            <div class="text-center user-info py-2">
+                                <!--Sustituir por imagen del usuario-->
+                                <img src="{{asset('images/user.png')}}" class="img-fluid rounded-circle user-image-bg">
+                                <h5 class="text-muted my-3">{{Auth::user()->name}}</h5>
+                                @foreach (Auth::user()->getRoleNames() as $role)
+                                    @if ($role == 'super-admin')
+                                        <span class="badge badge-pill badge-success mb-2">{{$role}}</span>
+                                    @else
+                                        <span class="badge badge-pill badge-primary mb-2">{{$role}}</span>
+                                    @endif
+                                @endforeach
+                            </div>
+
+                            <div class="dropdown-divider my-0"></div>
+
+                            <div class="text-center">
+                                <a href="#" class="dropdown-item item-dropdown-user btn-profile py-2">
+                                    <i class="far fa-user profile-icon"></i>
+                                    {{__('Mi perfil')}}
+                                </a>
+                            </div>
+
+                            <div class="dropdown-divider my-0"></div>
+
+                            <div class="text-center">
+                                <button type="submit" class="dropdown-item item-dropdown-user btn-logout py-2" data-toggle="modal" data-target="#modalLogout">
+                                    <i class="fas fa-times logout-icon"></i>
+                                    {{__('Cerrar sesión')}}
+                                </button>
+                            </div>
+                            <!--Fin del dropdown de usuario-->
                         </div>
                     </li>
                 </ul>
@@ -94,25 +121,25 @@
             <!--Botones del sideNav-->
 
             <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
-              <div class="mb-4">
-                <div class="float-left text-truncate w-25 text-center">
-                    <i class="far fa-home icon-menu"></i>
+                <div class="mb-4">
+                    <div class="float-left text-truncate w-25 text-center">
+                        <i class="far fa-home icon-menu"></i>
+                    </div>
+                    <div class="float-right text-truncate w-75 text-center">
+                        <span>{{__('Inicio')}}</span>
+                    </div>
                 </div>
-                <div class="float-right text-truncate w-75 text-center">
-                    <span>{{__('Inicio')}}</span>
-                </div>
-              </div>
             </a>
 
             <a href="{{route('home')}}" class="btn btn-link btn-block py-3">
-              <div class="mb-4">
-                <div class="float-left text-truncate w-25 text-center">
-                    <i class="far fa-building icon-menu"></i>
+                <div class="mb-4">
+                    <div class="float-left text-truncate w-25 text-center">
+                        <i class="far fa-building icon-menu"></i>
+                    </div>
+                    <div class="float-right text-truncate w-75 text-center">
+                        <span>{{__('Planteles')}}</span>
+                    </div>
                 </div>
-                <div class="float-right text-truncate w-75 text-center">
-                    <span>{{__('Planteles')}}</span>
-                </div>
-              </div>
             </a>
 
             <!--Fin botones del sideNav-->
@@ -124,11 +151,12 @@
 
         <main id="main" @auth class="main" @endauth>
             @yield('content')
-        </main>
+            </main>
 
     </div>
 
     @include('errors.Notifications')
+    @include('layouts.ModalLogout')
 
 
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>

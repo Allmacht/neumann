@@ -47,6 +47,10 @@ body{
 .user-image{
   width: 45px;
   height: 45px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px;
+  border-color: green;
 }
 .align-center-margin{
   margin-top: auto !important;
@@ -54,6 +58,10 @@ body{
 }
 .btn-sidenav-toggle{
   cursor: pointer;
+}
+.item-dropdown-user:focus{
+    background-color: white !important;
+    color: black !important;
 }
 @media(min-width:768px){
     .btn-login{
@@ -67,6 +75,53 @@ body{
         border-bottom-right-radius: 50rem !important;
         border-top-left-radius: none !important;
         border-bottom-left-radius: none !important;
+    }
+    .dropdown-menu-user{
+        width: 350px;
+        border-radius: 10px;
+    }
+    .user-image-bg{
+        width: 140px;
+        height: 140px;
+    }
+    .btn-logout{
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: none;
+        border-top-right-radius: none;
+        transition: 0.5s;
+    }
+    .logout-icon{
+        color: #DC3545;
+        transition: 0.5s;
+    }
+    .btn-logout:hover > .logout-icon{
+        color:white;
+    }
+    .btn-logout:hover{
+        background-color: #DC3545;
+        color:white;
+    }
+
+    .btn-profile{
+        transition: 0.5s;
+    }
+    .profile-icon{
+        color:#2B91FF;
+        transition: 0.5s;
+    }
+    .btn-profile:hover{
+        background-color: #2B91FF;
+        color:white;
+    }
+    .btn-profile:hover > .profile-icon{
+        color:white;
+    }
+}
+@media(max-width: 767px){
+    .user-image-bg{
+        width: 90px;
+        height: 90px;
     }
 }
 @media(min-width:992px){

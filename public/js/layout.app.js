@@ -17,4 +17,23 @@ $(document).ready(function(){
           }
         }
     });
+
+    $('.btn-logout').hover(function(){
+        $('.dropdown-menu-user').css('border-style','solid');
+        $('.dropdown-menu-user').css('border-color','#DC3545');
+        $('.dropdown-menu-user').css('transition','0.5s');
+    }, function(){
+        $('.dropdown-menu-user').css('border-style','solid');
+        $('.dropdown-menu-user').css('border-color','#D4D3D8');
+    });
+
+    $('.btn-profile').hover(function(){
+        $('.dropdown-menu-user').css('border-style','solid');
+        $('.dropdown-menu-user').css('border-color','#2B91FF');
+        $('.dropdown-menu-user').css('transition','0.5s');
+    },function(){
+        $('.dropdown-menu-user').css('border-style','solid');
+        $('.dropdown-menu-user').css('border-color','#D4D3D8');
+    });
+
 });
