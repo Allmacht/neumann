@@ -51,7 +51,7 @@ body{
   border-style: solid;
   border-width: 1px;
   padding: 2px;
-  border-color: green;
+  border-color: #00EC93;
 }
 .align-center-margin{
   margin-top: auto !important;
