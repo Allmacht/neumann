@@ -16,6 +16,7 @@ class CreateCampusesTable extends Migration
         Schema::create('campuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code');
+            $table->string('cct')->nullable();
             $table->string('name');
             $table->string('state');
             $table->string('municipality');
@@ -24,9 +25,11 @@ class CreateCampusesTable extends Migration
             $table->string('zipcode');
             $table->integer('external_number');
             $table->string('internal_number')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('shifts')->nullable();
+            $table->string('level');
             $table->boolean('status')->default(true);
-            $table->boolean('university');
-            $table->boolean('high_school');
             $table->timestamps();
         });
     }
