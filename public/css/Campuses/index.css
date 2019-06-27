@@ -1,0 +1,28 @@
+.text-title{
+    color: #5DB1FB;
+}
+hr{
+    background-color: #5DB1FB;
+}
+.rounded-input{
+    border-top-left-radius: 50rem !important;
+    border-bottom-left-radius: 50rem !important;
+    border-color: #28A745;
+    border-width: 1.5px;
+    border-right: none;
+}
+.rounded-button{
+    border-top-right-radius: 50rem !important;
+    border-bottom-right-radius: 50rem !important;        
+}
+.input-group-append .btn{
+    z-index: auto !important;
+}
+.form-control:focus{
+    border-color:  #28A745;
+    box-shadow: 0 0 0 0.2rem #84e19a;
+}
+/*.table .thead-color th {
+  color: white;
+  background-color: #5DB1FB;
+}

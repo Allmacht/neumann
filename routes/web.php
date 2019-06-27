@@ -20,3 +20,10 @@ Auth::routes(['verify'=>true]);
 //Ruta para verificación de cuentas como docente
 Route::get('/verifyAccount','Auth\VerificationController@teachers')->middleware('verified')->name('CheckTeacher');
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['verified','CheckTeacher']);
+
+
+//Rutas para modulo de Campuses
+Route::group(['middleware'=>['web','verified','CheckTeacher','role:super-admin|Administrador|Coordinador']], function(){
+    Route::get('/campuses', 'CampusesController@index')->name('campuses.index');
+    Route::get('/campuses/create', 'CampusesController@create')->name('campuses.create')->middleware('role:super-admin');
+});
