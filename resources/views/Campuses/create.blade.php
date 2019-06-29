@@ -9,7 +9,8 @@
         <div class="row">
             <div class="col-12 py-4 mt-3 div-0">
                 <h1 class="text-title text-md-left text-center">{{__('Nuevo plantel')}}</h1>
-                <form class="" action="index.html" method="post">
+                <form action="{{route('campuses.store')}}" method="post">
+                    @csrf
                     <div class="form-row mt-4">
 
                         <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
@@ -29,37 +30,37 @@
 
                         <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
                             <label for="state">{{__('Estado')}}</label>
-                            <input type="text" name="state" class="form-control rounded-pill shadow" value="{{old('state')}}" placeholder="Ingrese el estado" required>
+                            <input type="text" name="state" class="form-control rounded-pill shadow @error('state') is-invalid @enderror" value="{{old('state')}}" placeholder="Ingrese el estado" required>
                         </div>
 
                         <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
                             <label for="municipality">{{__('Municipio')}}</label>
-                            <input type="text" name="municipality" class="form-control rounded-pill shadow" value="{{old('municipality')}}" placeholder="Ingrese el Municipio" required>
+                            <input type="text" name="municipality" class="form-control rounded-pill shadow @error('municipality') is-invalid @enderror" value="{{old('municipality')}}" placeholder="Ingrese el Municipio" required>
                         </div>
 
                         <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
                             <label for="colony">{{__('Colonia/Fracc.')}}</label>
-                            <input type="text" name="colony" class="form-control rounded-pill shadow" value="{{old('colony')}}" placeholder="Colonia/Fracc.">
+                            <input type="text" name="colony" class="form-control rounded-pill shadow @error('colony') is-invalid @enderror" value="{{old('colony')}}" placeholder="Colonia/Fracc.">
                         </div>
 
                         <div class="form-group col-xl-5 col-lg-4 col-md-6 col-sm-12 mb-4">
                             <label for="street">{{_('Calle')}}</label>
-                            <input type="text" name="street" class="form-control rounded-pill shadow" value="{{old('street')}}" placeholder="Nombre la calle" required>
+                            <input type="text" name="street" class="form-control rounded-pill shadow @error('street') is-invalid @enderror" value="{{old('street')}}" placeholder="Nombre la calle" required>
                         </div>
 
                         <div class="form-group col-xl-3 col-lg-2 col-md-6 col-sm-12 mb-4">
                             <label for="zipcode">{{__('Código postal')}}</label>
-                            <input type="number" name="zipcode" class="form-control rounded-pill shadow" value="{{old('zipcode')}}" placeholder="C.P." required>
+                            <input type="number" name="zipcode" class="form-control rounded-pill shadow @error('zipcode') is-invalid @enderror" value="{{old('zipcode')}}" placeholder="C.P." required>
                         </div>
 
                         <div class="form-group col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-4">
                             <label for="external_number">{{__('N.Exterior')}}</label>
-                            <input type="number" name="external_number" class="form-control rounded-pill shadow" value="{{old('external_number')}}" required placeholder="N.Exterior">
+                            <input type="number" name="external_number" class="form-control rounded-pill shadow @error('external_number') is-invalid @enderror" value="{{old('external_number')}}" required placeholder="N.Exterior">
                         </div>
 
                         <div class="form-group col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-4">
                             <label for="internal_number">{{__('N.Interior')}}</label>
-                            <input type="text" name="internal_number" class="form-control rounded-pill shadow" value="{{old('internal_number')}}" placeholder="N.Interior">
+                            <input type="text" name="internal_number" class="form-control rounded-pill shadow @error('internal_number') is-invalid @enderror" value="{{old('internal_number')}}" placeholder="N.Interior">
                         </div>
 
                         <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -72,7 +73,7 @@
 
                         <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
                             <label for="shifts">{{__('Turno')}}</label>
-                            <select class="form-control rounded-pill shadow" name="shifts">
+                            <select class="form-control rounded-pill shadow" name="shift">
                                 <option value="Matutino">{{__('Matutino')}}</option>
                                 <option value="Vespertino">{{{__('Vespertino')}}}</option>
                                 <option value="Discontinuo">{{__('Discontinuo')}}</option>
