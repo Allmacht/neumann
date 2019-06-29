@@ -27,7 +27,7 @@ class CreateCampusesTable extends Migration
             $table->string('internal_number')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('shifts')->nullable();
+            $table->string('shift')->nullable();
             $table->string('level');
             $table->boolean('status')->default(true);
             $table->timestamps();
