@@ -23,7 +23,7 @@
                             <input type="text" name="cct" class="form-control rounded-pill shadow @error('cct') is-invalid @enderror" value="{{old('cct')}}" placeholder="CCT">
                         </div>
 
-                        <div class="form-group col-xl-7 col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="form-group col-xl-7 col-lg-6 col-md-6 col-sm-12 mb-4">
                             <label for="name">{{__('Nombre')}}</label>
                             <input type="text" name="name" class="form-control rounded-pill shadow @error('name') is-invalid @enderror" value="{{old('name')}}" required placeholder="Ingresa el nombre del plantel">
                         </div>
@@ -43,7 +43,7 @@
                             <input type="text" name="colony" class="form-control rounded-pill shadow @error('colony') is-invalid @enderror" value="{{old('colony')}}" placeholder="Colonia/Fracc.">
                         </div>
 
-                        <div class="form-group col-xl-5 col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="form-group col-xl-5 col-lg-6 col-md-6 col-sm-12 mb-4">
                             <label for="street">{{_('Calle')}}</label>
                             <input type="text" name="street" class="form-control rounded-pill shadow @error('street') is-invalid @enderror" value="{{old('street')}}" placeholder="Nombre la calle" required>
                         </div>
@@ -95,11 +95,11 @@
                         </div>
                     </div>
                     <div class="text-center mt-3">
-                        <a href="{{route('campuses.index')}}" class="btn btn-danger cancel-button px-5">
+                        <a href="{{route('campuses.index')}}" class="btn btn-danger cancel-button px-5 mb-2">
                             <i class="fas fa-times"></i>
                             {{__('Cancelar')}}
                         </a>
-                        <button type="submit" class="btn btn-success submit-button px-5">
+                        <button type="submit" class="btn btn-success submit-button px-5 mb-2">
                             <i class="fas fa-check-double"></i>
                             {{__('Aceptar')}}
                         </button>

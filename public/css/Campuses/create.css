@@ -1,14 +1,6 @@
 .text-title{
     color: #5DB1FB;
 }
-.cancel-button{
-    border-top-left-radius: 50rem !important;
-    border-bottom-left-radius: 50rem !important;
-}
-.submit-button{
-    border-top-right-radius: 50rem !important;
-    border-bottom-right-radius: 50rem !important;
-}
 hr{
     background-color:#5DB1FB;
 }
@@ -16,5 +8,13 @@ hr{
     .div-0{
         padding-left: 40px;
         padding-right: 40px;
+    }
+    .cancel-button{
+        border-top-left-radius: 50rem !important;
+        border-bottom-left-radius: 50rem !important;
+    }
+    .submit-button{
+        border-top-right-radius: 50rem !important;
+        border-bottom-right-radius: 50rem !important;
     }
 }
