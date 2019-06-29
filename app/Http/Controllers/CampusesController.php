@@ -21,7 +21,7 @@ class CampusesController extends Controller
     public function index()
     {
         $busqueda = Input::get('busqueda');
-        $campuses = Campus::where(DB::raw("CONCAT(code,' ',name)"), 'like', "%$busqueda%");
+        $campuses = Campus::where(DB::raw("CONCAT(code,' ',name)"), 'like', "%$busqueda%")->paginate(10);
         return view('Campuses.index', compact('campuses','busqueda'));
     }
 

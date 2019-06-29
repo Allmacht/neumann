@@ -36,15 +36,17 @@
             </div>
         </div>
 
-            @if ($campuses->count())
+        @if ($campuses->count())
             <div class="table table-responsive px-5">
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="thead-color">
                         <tr>
                             <th class="text-truncate">{{__('ID')}}</th>
+                            <th class="text-truncate">{{__('CCT')}}</th>
                             <th class="text-truncate">{{__('Nombre')}}</th>
-                            <th class="text-truncate">{{__('Estado')}}</th>
-                            <th class="text-truncate">{{__('Municipio')}}</th>
+                            <th class="text-truncate">{{__('Turno')}}</th>
+                            <th class="text-truncate">{{__('Nivel escolar')}}</th>
+                            <th class="text-truncate">{{{__('Administrador')}}}</th>
                             <th class="text-truncate">{{__('Acciones')}}</th>
                         </tr>
                     </thead>
@@ -52,13 +54,36 @@
                         @foreach ($campuses as $campus)
                             <tr>
                                 <td class="align-middle text-truncate">{{$campus->code}}</td>
+                                <td class="align-middle text-truncate">{{$campus->cct}}</td>
                                 <td class="align-middle text-truncate">{{$campus->name}}</td>
-                                <td class="align-middle text-truncate"{{$campus->state}}></td>
-                                <td class="align-middle text-truncate">{{$campus->municipality}}</td>
+                                <td class="align-middle text-truncate">{{$campus->shift}}</td>
+                                <td class="align-middle text-truncate">{{$campus->level}}</td>
+                                <td class="align-middle text-truncate">
+                                    <a href="#" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Ver perfil">
+                                        <i class="fas fa-user-circle"></i>
+                                        {{$campus->user->names." ".$campus->user->paternal_surname}}
+                                    </a>
+                                </td>
+                                <td class="align-middle text-truncate">
+                                    <a href="" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Mostrar">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    @hasrole('super-admin')
+                                        <a href="" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <i class="fas fa-file-edit"></i>
+                                        </a>
+                                        <span data-toggle="tooltip" data-placement="right" title="Desactivar">
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </span>
+                                    @endhasrole
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {{$campuses->appends(['busqueda'=> $busqueda])->links()}}
             </div>
         @else
             <div class="col-12 mt-5">
