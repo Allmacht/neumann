@@ -143,7 +143,8 @@ class CampusesController extends Controller
      */
     public function show($id)
     {
-        //
+        $campus = Campus::findOrfail($id);
+        return view('Campuses.show', compact('campus'));
     }
 
     /**

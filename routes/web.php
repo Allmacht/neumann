@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware(['verified
 Route::group(['middleware'=>['web','verified','CheckTeacher','role:super-admin|Administrador|Coordinador']], function(){
     Route::get('/campuses', 'CampusesController@index')->name('campuses.index');
     Route::get('/campuses/create', 'CampusesController@create')->name('campuses.create')->middleware('role:super-admin');
+    Route::get('/campuses/{id}', 'CampusesController@show')->name('campuses.show')->where('id','[0-9]+');
 
     Route::post('/campuses/store', 'CampusesController@store')->name('campuses.store')->middleware('role:super-admin');
 });

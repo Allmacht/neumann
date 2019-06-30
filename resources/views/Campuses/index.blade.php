@@ -65,7 +65,7 @@
                                     </a>
                                 </td>
                                 <td class="align-middle text-truncate">
-                                    <a href="" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Mostrar">
+                                    <a href="{{route('campuses.show',['id'=>$campus->id])}}" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Mostrar">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     @hasrole('super-admin')
