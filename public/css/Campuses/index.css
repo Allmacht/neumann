@@ -18,7 +18,7 @@ hr{
 .input-group-append .btn{
     z-index: auto !important;
 }
-.form-control:focus{
+.form-1:focus{
     border-color:  #28A745;
     box-shadow: 0 0 0 0.2rem #84e19a;
 }
