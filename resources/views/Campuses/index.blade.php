@@ -69,7 +69,7 @@
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     @hasrole('super-admin')
-                                        <a href="" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Editar">
+                                        <a href="{{route('campuses.edit', ['id'=>$campus->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Editar">
                                             <i class="fas fa-file-edit"></i>
                                         </a>
                                         @if ($campus->status)    
