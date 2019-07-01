@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Campus;
 use App\User;
 
@@ -167,7 +169,6 @@ class CampusesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -176,8 +177,39 @@ class CampusesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function enable(Request $request){
+        if(hash::check($request->password, Auth::user()->password)):
+            $campus = Campus::findOrfail($request->id);
+            $campus->status = true;
+
+            $campus->save();
+            return redirect()->route('campuses.index')->withStatus('Campus activado correctamente');
+        else:
+            return redirect()->route('campuses.index')->withErrors('Contraseña incorrecta');
+        endif;
+    }
+    public function disable(Request $request)
     {
-        //
+        if(Hash::check($request->password, Auth::user()->password)):
+            $campus = Campus::findOrfail($request->id);
+            $campus->status = false;
+
+            $campus->save();
+            return redirect()->route('campuses.index')->withStatus('Campus desactivado correctamente');
+        else:
+            return redirect()->route('campuses.index')->withErrors('Contraseña incorrecta');
+        endif;
+    }
+
+    public function destroy(Request $request)
+    {
+       if(Hash::check($request->password, Auth::user()->password)):
+            $campus = Campus::findOrfail($request->id);
+            $campus->delete();
+
+            return redirect()->route('campuses.index')->withStatus('Campus eliminado correctamente');
+       else:
+            return redirect()->route('campuses.index')->withErrors('Contraseña incorrecta');
+       endif;
     }
 }

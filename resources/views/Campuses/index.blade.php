@@ -25,7 +25,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 float-right px-0 mt-4">
                 <form method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control rounded-input" name="busqueda" placeholder="Buscar..." value="{{$busqueda}}">
+                        <input type="text" class="form-control form-1 rounded-input" name="busqueda" placeholder="Buscar..." value="{{$busqueda}}">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-success rounded-button">
                                 <i class="far fa-search"></i>
@@ -52,7 +52,7 @@
                     </thead>
                     <tbody>
                         @foreach ($campuses as $campus)
-                            <tr>
+                            <tr class="@if(!$campus->status) table-danger @endif">
                                 <td class="align-middle text-truncate">{{$campus->code}}</td>
                                 <td class="align-middle text-truncate">{{$campus->cct}}</td>
                                 <td class="align-middle text-truncate">{{$campus->name}}</td>
@@ -69,14 +69,27 @@
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     @hasrole('super-admin')
-                                        <a href="" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar">
+                                        <a href="" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Editar">
                                             <i class="fas fa-file-edit"></i>
                                         </a>
-                                        <span data-toggle="tooltip" data-placement="right" title="Desactivar">
-                                            <button type="button" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </span>
+                                        @if ($campus->status)    
+                                            <span data-toggle="tooltip" data-placement="right" title="Desactivar">
+                                                <button type="button" class="btn btn-danger open-modal" data-toggle="modal" data-target="#disable" data-action="disable" data-id="{{$campus->id}}">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </span>
+                                        @else
+                                            <span data-toggle="tooltip" data-placement="top" title="Activar">
+                                                <button type="button" class="btn btn-success open-modal" data-toggle="modal" data-target="#enable" data-action="enable" data-id="{{$campus->id}}">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </span>
+                                            <span data-toggle="tooltip" data-placement="right" title="Eliminar">
+                                                <button type="button" class="btn btn-danger open-modal" data-toggle="modal" data-target="#delete" data-action="delete" data-id="{{$campus->id}}">
+                                                    <i class="fas fa-times-square"></i>
+                                                </button>
+                                            </span>
+                                        @endif
                                     @endhasrole
                                 </td>
                             </tr>
@@ -95,4 +108,14 @@
         @endif
     </div>
 </div>
+
+@hasrole('super-admin')
+    @include('Campuses.modalDisable')
+    @include('Campuses.modalEnable')
+    @include('Campuses.modalDelete')
+@endhasrole
+
+@endsection
+@section('scripts')
+    <script src="{{asset('js/modalid.js')}}"></script>
 @endsection

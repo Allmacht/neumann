@@ -29,4 +29,7 @@ Route::group(['middleware'=>['web','verified','CheckTeacher','role:super-admin|A
     Route::get('/campuses/{id}', 'CampusesController@show')->name('campuses.show')->where('id','[0-9]+');
 
     Route::post('/campuses/store', 'CampusesController@store')->name('campuses.store')->middleware('role:super-admin');
+    Route::post('/campuses/disable', 'CampusesController@disable')->name('campuses.disable')->middleware('role:super-admin');
+    Route::post('/campuses/enable', 'CampusesController@enable')->name('campuses.enable')->middleware('role:super-admin');
+    Route::post('/campuses/destroy', 'CampusesController@destroy')->name('campuses.destroy')->middleware('role:super-admin');
 });

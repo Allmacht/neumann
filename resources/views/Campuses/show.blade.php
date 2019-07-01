@@ -85,7 +85,7 @@
                             <tr>
                                 <td class="align-middle">{{__('Administrador')}}</td>
                                 <td>
-                                    <a href="" class="btn btn-outline-primary">
+                                    <a href="" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Ver perfil">
                                         <i class="fas fa-user-circle"></i>
                                         {{$campus->user->names." ".$campus->user->paternal_surname}}
                                     </a>
