@@ -58,7 +58,7 @@
                                 <td>{{__('Municipio')}}</td>
                                 <td>{{$campus->municipality}}</td>
                             </tr>
-                            @if ($campus->colony)
+                            @if ($campus->colony != null)
                                 <tr>
                                     <td>{{__('Colonia/Fracc.')}}</td>
                                     <td>{{$campus->colony}}</td>
@@ -76,10 +76,10 @@
                                 <td>{{__('Número exterior')}}</td>
                                 <td>{{$campus->external_number}}</td>
                             </tr>
-                            @if ($campus->internal_number)
+                            @if ($campus->internal_number != null) 
                                 <tr>
                                     <td>{{__('Número interior')}}</td>
-                                    <td>{{$campus->external_number}}</td>
+                                    <td>{{$campus->internal_number}}</td>
                                 </tr>
                             @endif
                             <tr>
