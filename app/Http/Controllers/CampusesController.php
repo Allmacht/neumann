@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\File;
 use App\Campus;
 use App\User;
 
@@ -25,7 +28,48 @@ class CampusesController extends Controller
     {
         $busqueda = Input::get('busqueda');
         $campuses = Campus::where(DB::raw("CONCAT(code,' ',name)"), 'like', "%$busqueda%")->paginate(10);
-        return view('Campuses.index', compact('campuses','busqueda'));
+        $users = User::whereStatus(true)->get();
+        return view('Campuses.index', compact('campuses','busqueda','users'));
+    }
+
+    public function PDF(){
+        $campuses = Campus::all();
+        $date = date('Y-m-d');
+        $view = View::make('Campuses.PDF.index', compact('campuses','date'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper('a4', 'landscape');
+        $pdf->loadHTML($view);
+        return $pdf;
+    }
+
+    public function indexPDF(){
+        $date = date('Y-m-d');
+        $pdf = $this->PDF();
+        return $pdf->download($date."-planteles.pdf");
+    }
+
+    public function sendPDF(Request $request){
+        $request->sender = Auth::user()->names;
+        $request->sender_email = Auth::user()->email;
+
+        $date = date('Y-m-d');
+        $hour = date('H:i');
+
+        $request->pdf_name = $date."-".$hour."-planteles.pdf";
+        $request->route = public_path().'/temp/'.$request->pdf_name;
+
+        $pdf = $this->PDF();
+        $pdf->save('temp/'.$request->pdf_name);
+
+        $send = Mail::to($request->email)->send(new \App\Mail\Campuses($request));
+
+        if($send == null):
+            File::delete($request->route);
+            return redirect()->route('campuses.index')->withStatus('Enviado correctamente');
+        else:
+            File::delete($request->route);
+            return redirect()->route('campuses.index')->withErrors('Ha ocurrido un error');
+        endif;
     }
 
     /**

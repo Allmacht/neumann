@@ -10,17 +10,29 @@
         <div class="col-12 px-5 py-4">
             <h1 class="text-truncate text-title text-md-left text-center">{{__('Planteles')}}</h1>
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 float-left text-md-left text-center px-0 mt-4">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 float-left text-md-left text-center px-0 mt-4 form-row">
                 @hasrole('super-admin')
                     <a href="{{route('campuses.create')}}" class="btn btn-primary rounded-pill">
                         <i class="fas fa-plus"></i>
                         {{__('Nuevo plantel')}}
                     </a>
                 @endrole
-                <a href="#" class="btn btn-danger rounded-pill">
-                    <i class="far fa-file-pdf"></i>
-                    {{__('PDF')}}
-                </a>
+                <div class="dropdown ml-2">
+                    <button class="btn btn-danger rounded-pill dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-file-pdf"></i>
+                        {{__(' PDF')}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="{{route('campuses.pdf')}}" class="dropdown-item">
+                            <i class="fas fa-file-download mx-1"></i>
+                            {{__(' Descargar')}}
+                        </a>
+                        <button data-toggle="modal" data-target="#sendpdf" class="dropdown-item">
+                            <i class="fas fa-paper-plane mx-1"></i>
+                            {{__(' Enviar')}}
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 float-right px-0 mt-4">
                 <form method="get">
@@ -113,6 +125,7 @@
     @include('Campuses.modalDisable')
     @include('Campuses.modalEnable')
     @include('Campuses.modalDelete')
+    @include('Campuses.PDF.modalSend')
 @endhasrole
 
 @endsection

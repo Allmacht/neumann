@@ -28,7 +28,9 @@ Route::group(['middleware'=>['web','verified','CheckTeacher','role:super-admin|A
     Route::get('/campuses/create', 'CampusesController@create')->name('campuses.create')->middleware('role:super-admin');
     Route::get('/campuses/{id}', 'CampusesController@show')->name('campuses.show')->where('id','[0-9]+');
     Route::get('/campuses/edit/{id}', 'CampusesController@edit')->name('campuses.edit')->where('id', '[0-9]+')->middleware('role:super-admin');
-
+    Route::get('/campuses/pdf', 'CampusesController@indexPDF')->name('campuses.pdf');
+    
+    Route::post('/campuses/sendpdf','CampusesController@sendPDF')->name('campuses.sendpdf');
     Route::post('/campuses/store', 'CampusesController@store')->name('campuses.store')->middleware('role:super-admin');
     Route::post('/campuses/disable', 'CampusesController@disable')->name('campuses.disable')->middleware('role:super-admin');
     Route::post('/campuses/enable', 'CampusesController@enable')->name('campuses.enable')->middleware('role:super-admin');
