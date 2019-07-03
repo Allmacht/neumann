@@ -22,5 +22,16 @@ class UsersSeeder extends Seeder
         ]);
 
         $superAdmin->assignRole('super-admin');
+
+        $superAdmin1 = User::create([
+            'names ' => 'Isaac',
+            'paternal_surname' => 'Cruz',
+            'maternal_surname' => 'Herrera',
+            'name' => 'isaac',
+            'email' => 'crherrera94@hotmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        $superAdmin->assignRole('super-admin');
     }
 }
