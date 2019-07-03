@@ -45,8 +45,12 @@ class CampusesController extends Controller
         $date = date('Y-m-d');
         $view = 'Campuses.PDF.index';
         $orientation = 'landscape';
-        $pdf = $this->PDF($campuses,$view, $orientation);
-        return $pdf->download($date."-planteles.pdf");
+        try{
+            $pdf = $this->PDF($campuses,$view, $orientation);
+            return $pdf->download($date."-planteles.pdf");
+        }catch(Exception $e){
+            return redirect()->route('campuses.index').withErrors('Ha ocurrido un error');
+        }
     }
 
     public function showPDF($id){
@@ -54,8 +58,12 @@ class CampusesController extends Controller
         $date = date('Y-m-d');
         $view = 'Campuses.PDF.campus';
         $orientation = 'vertical';
-        $pdf = $this->PDF($campus, $view, $orientation);
-        return $pdf->download($date."-".$campus->name.".pdf");
+        try{
+            $pdf = $this->PDF($campus, $view, $orientation);
+            return $pdf->download($date."-".$campus->name.".pdf");
+        }catch(Exception $e){
+            return redirect()->route('campuses.show',['id' => $id]).withErrors('Ha ocurrido un error');
+        }
     }
 
     public function sendPDF(Request $request){
