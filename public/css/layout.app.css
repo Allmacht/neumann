@@ -64,6 +64,19 @@ body{
     background-color: white !important;
     color: black !important;
 }
+.icon-notification{
+  color: #00B846;
+}
+.dropdown-notifications{
+  max-height: 345px;
+  overflow-y: auto;
+}
+.link-notification{
+  border-radius: 10px;
+}
+.notification-title{
+  color: #1A2B63;
+}
 @media(min-width:768px){
     .btn-login{
         border-top-left-radius: 50rem !important;
@@ -117,6 +130,13 @@ body{
     }
     .btn-profile:hover > .profile-icon{
         color:white;
+    }
+    .dropdown-notifications{
+      width: 450px;
+    }
+    .notification-div{
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
     }
 }
 @media(max-width: 767px){
