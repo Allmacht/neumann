@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('campuses', 'active-nav')
 @section('title', $campus->name)
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/Campuses/index.css')}}">
+@endsection
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -20,7 +23,7 @@
                         <h6>{{__('Acciones')}}</h6>
                         <hr>
                         <div class="form-row">
-                            <a href="#" class="btn btn-success mx-auto">
+                            <a href="{{route('campuses.edit',['id'=>$campus->id])}}" class="btn btn-success mx-auto">
                                 <i class="fas fa-edit"></i>
                                 {{__('Editar')}}
                             </a>
@@ -30,7 +33,7 @@
                                     {{__('PDF')}}
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item btn-pdf">
+                                    <a href="{{route('campuses.show.pdf',['id'=>$campus->id])}}" class="dropdown-item btn-pdf">
                                         <div class="float-left w-25 text-center">
                                             <i class="fas fa-file-download text-danger"></i>
                                         </div>

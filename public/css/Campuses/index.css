@@ -1,9 +1,6 @@
 .text-title{
     color: #5DB1FB;
 }
-hr{
-    background-color: #5DB1FB;
-}
 .rounded-input{
     border-top-left-radius: 50rem !important;
     border-bottom-left-radius: 50rem !important;
@@ -25,8 +22,4 @@ hr{
 .btn-pdf:active{
     color: black;
     background: white !important;
-}
-/*.table .thead-color th {
-  color: white;
-  background-color: #5DB1FB;
 }

@@ -49,6 +49,15 @@ class CampusesController extends Controller
         return $pdf->download($date."-planteles.pdf");
     }
 
+    public function showPDF($id){
+        $campus = Campus::findOrfail($id);
+        $date = date('Y-m-d');
+        $view = 'Campuses.PDF.campus';
+        $orientation = 'vertical';
+        $pdf = $this->PDF($campus, $view, $orientation);
+        return $pdf->download($date."-".$campus->name.".pdf");
+    }
+
     public function sendPDF(Request $request){
         $request->sender = Auth::user()->names;
         $request->sender_email = Auth::user()->email;

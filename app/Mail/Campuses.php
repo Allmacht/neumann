@@ -31,6 +31,6 @@ class Campuses extends Mailable
         return $this->view('Campuses.PDF.email')->attach($this->data->route,[
             'as' => $this->data->pdf_name,
             'mime' => 'application/pdf',
-        ])->subject('Planteles');
+        ])->subject($this->data->title);
     }
 }
