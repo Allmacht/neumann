@@ -128,12 +128,14 @@
         @endif
     </div>
 </div>
-
+@section('campusesURL')
+    {{route('campuses.sendpdf')}}
+@endsection
+@include('Campuses.PDF.modalSend')
 @hasrole('super-admin')
     @include('Campuses.modalDisable')
     @include('Campuses.modalEnable')
     @include('Campuses.modalDelete')
-    @include('Campuses.PDF.modalSend')
 @endhasrole
 
 @endsection

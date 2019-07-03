@@ -33,8 +33,7 @@ class CampusesController extends Controller
     }
 
     public function PDF($data, $view, $orientation){
-        $date = date('Y-m-d');
-        $view = View::make($view, compact('data','date'))->render();
+        $view = View::make($view, compact('data'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper('a4', $orientation);
         $pdf->loadHTML($view);
@@ -56,12 +55,11 @@ class CampusesController extends Controller
         $campuses = Campus::all();
         $view = 'Campuses.PDF.index';
         $orientation = 'landscape';
+
         $date = date('Y-m-d');
         $hour = date('H:i');
-
         $request->pdf_name = $date."-".$hour."-planteles.pdf";
         $request->route = public_path().'/temp/'.$request->pdf_name;
-
         $pdf = $this->PDF($campuses,$view,$orientation);
         $pdf->save('temp/'.$request->pdf_name);
 
@@ -69,10 +67,38 @@ class CampusesController extends Controller
             $send = Mail::to($request->email)->send(new \App\Mail\Campuses($request));
             File::delete($request->route);
             return redirect()->route('campuses.index')->withStatus('email enviado correctamente');
-            
         }catch(Exception $e){
             File::delete($request->route);
             return redirect()->route('campuses.index')->withErrors('Ha ocurrido un error');
+        }
+    }
+
+    public function sendCampus(Request $request, $id){
+        $request->sender = Auth::user()->names;
+        $request->sender_email = Auth::user()->email;
+
+        $campus = Campus::findOrfail($id);
+        $view = 'Campuses.PDF.campus';
+        $orientation = 'vertical';
+
+        $date = date('Y-m-d');
+        $hour = date('H:i');
+
+        $request->pdf_name = $date."-".$hour."-".$campus->name.".pdf";
+        $request->route = public_path().'/temp/'.$request->pdf_name;
+
+        $pdf = $this->PDF($campus, $view, $orientation);
+
+        $pdf->save('temp/'.$request->pdf_name);
+
+        try{
+            $send = Mail::to($request->email)->send(new \App\Mail\Campuses($request));
+            File::delete($request->route);
+            return redirect()->route('campuses.show',['id'=>$id])->withStatus('email enviado correctamente');
+
+        }catch(Exception $e){
+            File::delete($request->route);
+            return redirect()->route('campuses.show', ['id'=>$id])->withErrors('Ha ocurrido un error');
         }
     }
 

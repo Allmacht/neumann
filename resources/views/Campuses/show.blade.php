@@ -19,14 +19,36 @@
                     <div class="bg-white shadow rounded py-3">
                         <h6>{{__('Acciones')}}</h6>
                         <hr>
-                        <a href="#" class="btn btn-success">
-                            <i class="fas fa-edit"></i>
-                            {{__('Editar')}}
-                        </a>
-                        <a href="#" class="btn btn-danger">
-                            <i class="fas fa-file-pdf"></i>
-                            {{__('PDF')}}
-                        </a>
+                        <div class="form-row">
+                            <a href="#" class="btn btn-success mx-auto">
+                                <i class="fas fa-edit"></i>
+                                {{__('Editar')}}
+                            </a>
+                            <div class="dropdown mx-auto">
+                                <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <i class="fas fa-file-pdf"></i>
+                                    {{__('PDF')}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item btn-pdf">
+                                        <div class="float-left w-25 text-center">
+                                            <i class="fas fa-file-download text-danger"></i>
+                                        </div>
+                                        <div class="float-right w-75 text-center">
+                                            {{__(' Descargar')}}
+                                        </div>
+                                    </a>
+                                    <button data-toggle="modal" data-target="#sendpdf" class="dropdown-item btn-pdf">
+                                        <div class="float-left w-25 text-center">
+                                            <i class="fas fa-share-square text-danger"></i>
+                                        </div>
+                                        <div class="float-right w-75 text-center">
+                                            {{__(' Enviar')}}
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 float-right py-2 shadow table-responsive bg-white">
@@ -117,4 +139,8 @@
             </div>
         </div>
     </div>
+    @section('campusesURL')
+        {{route('campuses.sendcampus', ['id'=> $campus->id])}}
+    @endsection
+    @include('Campuses.PDF.modalSend')
 @endsection

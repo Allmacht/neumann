@@ -20,7 +20,7 @@
                     <h5><i class="fal fa-building"></i>{{__('Lista de planteles registrados')}}</h5>
                 </div>
                 <div class="col-6 text-muted px-0 float-right text-right">
-                    {{$date}}
+                    {{date('Y-m-d')}}
                 </div>
                 <div class="responsive-table px-0 mx-0 table-div">
                     <table class="table table-bordered">

@@ -67,9 +67,20 @@
                             <!--<span class="badge badge-pill badge-danger float-left">1</span>-->
                             <i class="fas fa-bell fa-lg"></i>
                         </a>
-
-                        <div class="dropdown-menu dropdown-menu-right">
-
+                        
+                        <div class="dropdown-menu dropdown-menu-right dropdown-notifications py-1">
+                            <!--Notificaciones-->
+                            <a href="" class="my-2 form-row mx-2 text-decoration-none link-notification">
+                               <div class="col-2 text-center my-auto">
+                                   <i class="fas fa-check-double fa-2x icon-notification"></i>
+                               </div>
+                               <div class="col-10">
+                                   <h5 class="notification-title">{{__('Nuevo registro')}}</h5>
+                                   <p class="text-truncate notification-text text-dark">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                               </div>
+                           </a>
+                           <div class="dropdown-divider"></div>
+                            <!--fin de notificaciones-->
                         </div>
                     </li>
                     <li class="nav-item dropdown">

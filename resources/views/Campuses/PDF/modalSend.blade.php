@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('campuses.sendpdf')}}" method="POST">
+            <form action="@yield('campusesURL')" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
