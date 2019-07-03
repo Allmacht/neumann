@@ -23,13 +23,21 @@
                         {{__(' PDF')}}
                     </button>
                     <div class="dropdown-menu">
-                        <a href="{{route('campuses.pdf')}}" class="dropdown-item">
-                            <i class="fas fa-file-download mx-1"></i>
-                            {{__(' Descargar')}}
+                        <a href="{{route('campuses.pdf')}}" class="dropdown-item btn-pdf">
+                            <div class="float-left w-25 text-center">
+                                <i class="fas fa-file-download text-danger"></i>
+                            </div>
+                            <div class="float-right w-75 text-center">
+                                {{__(' Descargar')}}
+                            </div>
                         </a>
-                        <button data-toggle="modal" data-target="#sendpdf" class="dropdown-item">
-                            <i class="fas fa-paper-plane mx-1"></i>
-                            {{__(' Enviar')}}
+                        <button data-toggle="modal" data-target="#sendpdf" class="dropdown-item btn-pdf">
+                            <div class="float-left w-25 text-center">
+                                <i class="fas fa-share-square text-danger"></i>
+                            </div>
+                            <div class="float-right w-75 text-center">
+                                {{__(' Enviar')}}
+                            </div>
                         </button>
                     </div>
                 </div>
