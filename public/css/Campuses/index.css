@@ -22,6 +22,10 @@ hr{
     border-color:  #28A745;
     box-shadow: 0 0 0 0.2rem #84e19a;
 }
+.btn-pdf:active{
+    color: black;
+    background: white !important;
+}
 /*.table .thead-color th {
   color: white;
   background-color: #5DB1FB;
