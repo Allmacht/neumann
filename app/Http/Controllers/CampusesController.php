@@ -32,33 +32,37 @@ class CampusesController extends Controller
         return view('Campuses.index', compact('campuses','busqueda','users'));
     }
 
-    public function PDF(){
-        $campuses = Campus::all();
+    public function PDF($data, $view, $orientation){
         $date = date('Y-m-d');
-        $view = View::make('Campuses.PDF.index', compact('campuses','date'))->render();
+        $view = View::make($view, compact('data','date'))->render();
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->setPaper('a4', 'landscape');
+        $pdf->setPaper('a4', $orientation);
         $pdf->loadHTML($view);
         return $pdf;
     }
 
     public function indexPDF(){
+        $campuses = Campus::all();
         $date = date('Y-m-d');
-        $pdf = $this->PDF();
+        $view = 'Campuses.PDF.index';
+        $orientation = 'landscape';
+        $pdf = $this->PDF($campuses,$view, $orientation);
         return $pdf->download($date."-planteles.pdf");
     }
 
     public function sendPDF(Request $request){
         $request->sender = Auth::user()->names;
         $request->sender_email = Auth::user()->email;
-
+        $campuses = Campus::all();
+        $view = 'Campuses.PDF.index';
+        $orientation = 'landscape';
         $date = date('Y-m-d');
         $hour = date('H:i');
 
         $request->pdf_name = $date."-".$hour."-planteles.pdf";
         $request->route = public_path().'/temp/'.$request->pdf_name;
 
-        $pdf = $this->PDF();
+        $pdf = $this->PDF($campuses,$view,$orientation);
         $pdf->save('temp/'.$request->pdf_name);
 
         try{
