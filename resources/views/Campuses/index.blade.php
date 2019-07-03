@@ -141,4 +141,5 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/modalid.js')}}"></script>
+    <script src="{{asset('js/EmailButton.js')}}"></script>
 @endsection

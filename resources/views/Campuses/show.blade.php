@@ -147,3 +147,6 @@
     @endsection
     @include('Campuses.PDF.modalSend')
 @endsection
+@section('scripts')
+    <script src="{{asset('js/EmailButton.js')}}"></script>
+@endsection

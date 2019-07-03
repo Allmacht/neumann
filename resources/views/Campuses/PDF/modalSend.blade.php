@@ -12,11 +12,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="title">{{__('Asunto')}}</label>
-                        <input type="text" name="title" class="form-control rounded-pill shadow" placeholder="Asunto" required>
+                        <input id="subject" type="text" name="title" class="form-control rounded-pill shadow" placeholder="Asunto" required>
                     </div>
                     <div class="form-group">
                         <label for="email">{{__('Correo electrónico')}}</label>
-                        <input type="email" name="email" class="form-control rounded-pill shadow" placeholder="Correo electrónico" required>
+                        <input id="email" type="email" name="email" class="form-control rounded-pill shadow" placeholder="Correo electrónico" required>
                     </div>
                     <div class="form-group">
                         <label for="message">{{__('Mensaje')}}</label>
@@ -24,11 +24,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">
+                    <button id="btn-send-email" type="submit" class="btn btn-success">
                         <i class="fas fa-check"></i>
                         {{__('Enviar')}}
                     </button>
-                    <button type="button" data-dismiss="modal" class="btn btn-danger">
+                    <button id="btn-send-cancel" type="button" data-dismiss="modal" class="btn btn-danger">
                         <i class="fas fa-times"></i>
                         {{__('Cancelar')}}
                     </button>
