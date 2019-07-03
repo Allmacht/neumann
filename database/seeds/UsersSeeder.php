@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
         $superAdmin->assignRole('super-admin');
 
         $superAdmin1 = User::create([
-            'names ' => 'Isaac',
+            'names' => 'Isaac',
             'paternal_surname' => 'Cruz',
             'maternal_surname' => 'Herrera',
             'name' => 'isaac',
