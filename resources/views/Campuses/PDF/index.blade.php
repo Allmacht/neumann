@@ -36,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($campuses as $campus)
+                            @foreach ($data as $campus)
                                 <tr class="@if(!$campus->status) table-danger @endif">
                                     <td class="text-truncate">{{$campus->code}}</td>
                                     <td class="text-truncate">{{$campus->cct}}</td>
