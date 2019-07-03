@@ -61,15 +61,15 @@ class CampusesController extends Controller
         $pdf = $this->PDF();
         $pdf->save('temp/'.$request->pdf_name);
 
-        $send = Mail::to($request->email)->send(new \App\Mail\Campuses($request));
-
-        if($send == null):
+        try{
+            $send = Mail::to($request->email)->send(new \App\Mail\Campuses($request));
             File::delete($request->route);
-            return redirect()->route('campuses.index')->withStatus('Enviado correctamente');
-        else:
+            return redirect()->route('campuses.index')->withStatus('email enviado correctamente');
+            
+        }catch(Exception $e){
             File::delete($request->route);
             return redirect()->route('campuses.index')->withErrors('Ha ocurrido un error');
-        endif;
+        }
     }
 
     /**
