@@ -17,30 +17,32 @@
                         {{__('Nuevo plantel')}}
                     </a>
                 @endrole
-                <div class="dropdown ml-2">
-                    <button class="btn btn-danger rounded-pill dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fas fa-file-pdf"></i>
-                        {{__(' PDF')}}
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="{{route('campuses.pdf')}}" class="dropdown-item btn-pdf">
-                            <div class="float-left w-25 text-center">
-                                <i class="fas fa-file-download text-danger"></i>
-                            </div>
-                            <div class="float-right w-75 text-center">
-                                {{__(' Descargar')}}
-                            </div>
-                        </a>
-                        <button data-toggle="modal" data-target="#sendpdf" class="dropdown-item btn-pdf">
-                            <div class="float-left w-25 text-center">
-                                <i class="fas fa-share-square text-danger"></i>
-                            </div>
-                            <div class="float-right w-75 text-center">
-                                {{__(' Enviar')}}
-                            </div>
+                @if ($campuses->count())    
+                    <div class="dropdown ml-2">
+                        <button class="btn btn-danger rounded-pill dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-file-pdf"></i>
+                            {{__(' PDF')}}
                         </button>
+                        <div class="dropdown-menu">
+                            <a href="{{route('campuses.pdf')}}" class="dropdown-item btn-pdf">
+                                <div class="float-left w-25 text-center">
+                                    <i class="fas fa-file-download text-danger"></i>
+                                </div>
+                                <div class="float-right w-75 text-center">
+                                    {{__(' Descargar')}}
+                                </div>
+                            </a>
+                            <button data-toggle="modal" data-target="#sendpdf" class="dropdown-item btn-pdf">
+                                <div class="float-left w-25 text-center">
+                                    <i class="fas fa-share-square text-danger"></i>
+                                </div>
+                                <div class="float-right w-75 text-center">
+                                    {{__(' Enviar')}}
+                                </div>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 float-right px-0 mt-4">
                 <form method="get">
