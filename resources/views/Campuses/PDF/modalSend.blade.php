@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="@yield('campusesURL')" method="POST">
+            <form action="@yield('sendURL')" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

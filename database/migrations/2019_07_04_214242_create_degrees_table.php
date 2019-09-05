@@ -21,6 +21,7 @@ class CreateDegreesTable extends Migration
             $table->integer('semesters')->nullable();
             $table->string('dicipline');
             $table->string('description')->nullable();
+            $table->text('information')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

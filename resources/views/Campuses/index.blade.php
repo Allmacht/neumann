@@ -59,7 +59,7 @@
         </div>
 
         @if ($campuses->count())
-            <div class="table table-responsive px-5">
+            <div class="table-responsive px-5">
                 <table class="table table-hover">
                     <thead class="thead-color">
                         <tr>
@@ -130,7 +130,7 @@
         @endif
     </div>
 </div>
-@section('campusesURL')
+@section('sendURL')
     {{route('campuses.sendpdf')}}
 @endsection
 @include('Campuses.PDF.modalSend')

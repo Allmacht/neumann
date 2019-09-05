@@ -39,3 +39,11 @@ Route::group(['middleware'=>['web','verified','CheckTeacher','role:super-admin|A
     Route::post('/campuses/destroy', 'CampusesController@destroy')->name('campuses.destroy')->middleware('role:super-admin');
     Route::post('/campuses/update/{id}', 'CampusesController@update')->name('campuses.update')->middleware('role:super-admin');
 });
+
+Route::group(['middleware' => ['web','verified','CheckTeacher','role:super-admin|Administrador|Coordinador']], function(){
+    Route::get('/degrees', 'DegreesController@index')->name('degrees.index');
+    Route::get('/degrees/create', 'DegreesController@create')->name('degrees.create')->middleware('role:super-admin|Administrador');
+    Route::get('/degrees/{id}', 'DegreesController@show')->name('degrees.show')->where('id','[0-9]+');
+
+    Route::post('/degrees/store', 'DegreesController@store')->name('degrees.store')->middleware('role:super-admin|Administrador');
+});
