@@ -47,3 +47,10 @@ Route::group(['middleware' => ['web','verified','CheckTeacher','role:super-admin
 
     Route::post('/degrees/store', 'DegreesController@store')->name('degrees.store')->middleware('role:super-admin|Administrador');
 });
+
+// Rutas para modulo biblioteca
+ 
+Route::group(['middleware'=>['web','verified','CheckTeacher']] ,function(){
+    Route::get('/libraries', 'LibrariesController@index')->name('libraries.index');
+});
+// lo acabo de ver ya esta, ya no es necesario que hahaga las 2 interfaces el middleware se encarga de controlar  ese show si bato mientras este dentro del controlador ok

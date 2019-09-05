@@ -1,0 +1,44 @@
+/* globales */
+.libraries{
+   height: 100px;
+   /* margin-top: .5vh; */
+   background-image: linear-gradient(to right,#1E8449 ,#117A65,#148F77,#2874A6,#1F618D);
+}
+/* carousel */
+ .carousel-inner .carousel-item{
+     height: 55vh;
+     min-height: 9rem;
+     background-position: center center;
+     background-size: cover;
+ }
+ .carousel-inner .carousel-caption {
+     font-size: 4rem;
+ }
+ .carousel-inner h5{
+     font-size: 2.5rem;
+ }
+ /* navegacion */
+ .libraries a{
+     margin: 5rem;
+     text-decoration: none;
+     color: white;
+     text-align: center;
+     width: 150px;
+     font-size: 18px;
+     align-items: center;
+
+ }
+ .libraries a:last-of-type{
+    margin: 0;
+}
+.libraries a .icon-nav{
+    font-size: 50px;
+    margin: 5px;
+    padding-top: 2px;
+}
+/* frase */
+.frase blockquote{
+    font-size: 25px;
+    padding-top: 15px;
+    
+}
