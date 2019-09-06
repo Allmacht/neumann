@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 use App\Degree;
 use App\User;
 
@@ -109,9 +110,10 @@ class DegreesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $degree = Degree::findOrfail($id);
+        return view('Degrees.edit', compact('degree'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -121,7 +123,37 @@ class DegreesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'code' => [Rule::unique('degrees')->ignore($id), 'digits:5','required'],
+            'rvoe' => [Rule::unique('degrees')->ignore($id), 'nullable'],
+            'name' => [Rule::unique('degrees')->ignore($id), 'required'],
+            'semesters' => 'required|numeric'
+        ],[
+            'code.unique' => 'El código ingresado ya está en uso',
+            'code.digits' => 'El código único debe contener 5 caracteres',
+            'code.required' => 'El código único es requerido',
+
+            'rvoe.unique' => 'El código RVOE ya está en uso',
+
+            'name.unique' => 'El nombre ingresado ya está en uso',
+            'name.required' => 'El campo nombre es requerido',
+
+            'semesters.required' => 'El campo semestres es requerido',
+            'semesters.numeric' => 'El campo semestres debe ser númerico',
+
+        ]);
+
+        $degree = Degree::findOrfail($id);
+        $degree->code = $request->code;
+        $degree->rvoe = $request->rvoe;
+        $degree->name = $request->name;
+        $degree->semesters = $request->semesters;
+        $degree->dicipline = $request->dicipline;
+        $degree->description = $request->description;
+
+        $degree->save();
+        
+        return redirect()->route('degrees.index')->withStatus('Información actualizada correctamente');
     }
 
     /**

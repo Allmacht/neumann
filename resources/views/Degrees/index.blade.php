@@ -81,6 +81,11 @@
                                         <a href="{{route('degrees.show',['id'=>$degree->id])}}" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Mostrar">
                                             <i class="fas fa-eye"></i>
                                         </a>
+                                        @hasanyrole('super-admin|Administrador')
+                                            <a href="{{route('degrees.edit',['id' => $degree->id])}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" data-title="Modificar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @endhasanyrole
                                     </td>
                                 </tr>
                             @endforeach

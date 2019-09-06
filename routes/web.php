@@ -44,8 +44,10 @@ Route::group(['middleware' => ['web','verified','CheckTeacher','role:super-admin
     Route::get('/degrees', 'DegreesController@index')->name('degrees.index');
     Route::get('/degrees/create', 'DegreesController@create')->name('degrees.create')->middleware('role:super-admin|Administrador');
     Route::get('/degrees/{id}', 'DegreesController@show')->name('degrees.show')->where('id','[0-9]+');
-
+    Route::get('/degrees/edit/{id}', 'DegreesController@edit')->name('degrees.edit')->where('id','[0-9]+')->middleware('role:super-admin|Administrador');
+    
     Route::post('/degrees/store', 'DegreesController@store')->name('degrees.store')->middleware('role:super-admin|Administrador');
+    Route::post('/degrees/update/{id}','DegreesController@update')->name('degrees.update')->where('id','[0-9]+')->middleware('role:super-admin|Administrador');
 });
 
 // Rutas para modulo biblioteca

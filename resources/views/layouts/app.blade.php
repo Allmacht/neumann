@@ -158,7 +158,7 @@
                 <a href="{{route('degrees.index')}}" class="btn btn-link btn-block py-3 @yield('degrees')">
                     <div class="mb-4">
                         <div class="float-left text-truncate w-25 text-center">
-                            <i class="far fa-building icon-menu"></i>
+                            <i class="far fa-user-graduate icon-menu"></i>
                         </div>
                         <div class="float-right text-truncate w-75 text-center">
                             <span>{{__('Licenciaturas')}}</span>
