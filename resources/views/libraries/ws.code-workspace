@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "/home/crherrera94/Documents/Neumann"
+		},
+		{
+			"path": "/home/crherrera94/Documents/pokemon"
+		},
+		{
+			"path": "/opt/lampp/htdocs"
+		},
+		{
+			"path": "/home/crherrera94/Documents/html"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "html"
+	}
+}
