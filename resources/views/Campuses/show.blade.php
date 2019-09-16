@@ -17,10 +17,12 @@
                             {{$campus->name}}
                         </h3>
                     </div>
-                    <a href="{{route('campuses.edit', ['id'=>$campus->id])}}" class="btn btn-success btn-sm rounded-pill">
-                        <i class="fas fa-edit"></i>
-                        {{__('Editar')}}
-                    </a>
+                    @if (Auth::user()->hasRole('super-admin'))    
+                        <a href="{{route('campuses.edit', ['id'=>$campus->id])}}" class="btn btn-success btn-sm rounded-pill">
+                            <i class="fas fa-edit"></i>
+                            {{__('Editar')}}
+                        </a>
+                    @endif
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 float-right py-2 table-responsive">
                     <!--Tabla de información-->
@@ -140,18 +142,52 @@
                             <h4 class="alert-heading mb-0">{{__('Carreras disponibles')}}</h4>                            
                         </div>
                         <div class="col-2 text-right">
+                            @if(Auth::user()->hasAnyRole('super-admin') || Auth::user()->id == $campus->user_id)
+                                <i class="fas fa-plus-circle fa-lg" data-toggle="modal" data-target="#addDegree" style="cursor:pointer"></i>
+                            @endif
                             <i id="collapse-icon-degrees" class="fas fa-arrow-circle-up fa-lg" style="cursor: pointer" data-toggle="collapse" data-target="#table-degrees"></i>
                         </div>
                     </div>
-                    <div class="collapse show mb-3" id="table-degrees" style="z-index: -1">
-                        <table class="table table-hover bg-white shadow">
+                    <div class="collapse table-responsive show mb-3" id="table-degrees" style="z-index: -1">
+                        <table class="table table-hover bg-white shadow" style="table-layout: fixed">
                             <thead>
                                 <tr>
-                                    <th>{{__('ID')}}</th>
+                                    {{-- <th>{{__('ID')}}</th> --}}
                                     <th>{{__('Nombre')}}</th>
-                                    <th>{{__('Duración')}}</th>
+                                    <th>{{__('Coordinador')}}</th>
+                                    <th>{{__('Status')}}</th>
+                                    <th>{{__('Acciones')}}</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($Rdegrees as $Rdegree)
+                                    <tr>
+                                        {{-- <td class="align-middle text-truncate"></td> --}}
+                                        <td class="align-middle text-truncate">
+                                            {{$Rdegree->degree->name}}
+                                        </td>
+                                        <td class="align-middle text-truncate">
+                                            {{$Rdegree->user->names." ".$Rdegree->user->paternal_surname}}
+                                        </td>
+                                        <td class="align-middle text-truncate {{$Rdegree->status ? 'table-success' : 'table-danger'}}">
+                                            {{$Rdegree->status ? 'Activa' : 'Inactiva'}}
+                                        </td>
+                                        <td class="align-middle text-truncate">
+                                            @if (Auth::user()->id == $campus->user_id || Auth::user()->hasRole('super-admin'))    
+                                                <a href="#" class="btn btn-success" data-toggle="tooltip" data-placement="left" data-title="Modificar">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <span data-toggle="tooltip" data-placement="top" data-title="Desactivar">
+                                                    <button type="button" class="btn btn-danger open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#disable" data-action="disable">
+                                                        <i class="fas fa-times-circle"></i>
+                                                    </button>
+                                                </span>
+                                            @endif
+                                            
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                     <!--fin tabla de carreras-->
@@ -159,11 +195,19 @@
             </div>
         </div>
     </div>
-    @section('campusesURL')
+    
+    @section('sendURL')
         {{route('campuses.sendcampus', ['id'=> $campus->id])}}
     @endsection
+
     @include('Campuses.PDF.modalSend')
+    @include('Campuses.degrees.disable')
+    
+    @if (Auth::user()->hasAnyRole('super-admin') || Auth::user()->id == $campus->user_id)
+        @include('Campuses.addDegree') 
+    @endif
 @endsection
 @section('scripts')
     <script src="{{asset('js/EmailButton.js')}}"></script>
+    <script src="{{asset('js/modalid.js')}}"></script>
 @endsection

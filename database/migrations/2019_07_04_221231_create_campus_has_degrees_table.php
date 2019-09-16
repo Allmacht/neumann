@@ -21,6 +21,7 @@ class CreateCampusHasDegreesTable extends Migration
             $table->foreign('degree_id')->references('id')->on('degrees');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

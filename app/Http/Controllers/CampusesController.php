@@ -11,6 +11,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
+use App\Degree;
+use App\Campus_has_degrees as CHD;
 use App\Campus;
 use App\User;
 
@@ -238,9 +240,26 @@ class CampusesController extends Controller
     public function show($id)
     {
         $campus = Campus::findOrfail($id);
-        return view('Campuses.show', compact('campus'));
+        $degrees = Degree::whereStatus(true)->get();
+        $Rdegrees = CHD::where('campus_id', $id)->get();
+        $users = User::whereStatus(true)->get();
+        return view('Campuses.show', compact('campus','degrees','users', 'Rdegrees'));
     }
 
+    public function assignDegree(Request $request, $id){
+        $check_degree = CHD::where('campus_id', $id)->where('degree_id',$request->degree_id)->get();
+        if($check_degree->count()):
+            return redirect()->route('campuses.show', ['id' => $id])->withErrors('La licenciatura ya está registrada en este plantel');
+        else:
+            $register = new CHD();
+            $register->campus_id = $id;
+            $register->degree_id = $request->degree_id;
+            $register->user_id = $request->user_id;
+
+            $register->save();
+            return redirect()->route('campuses.show',['id' => $id])->withStatus('La licenciatura ha sido registrada');
+        endif;
+    }
     /**
      * Show the form for editing the specified resource.
      *
