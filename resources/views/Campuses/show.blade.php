@@ -177,11 +177,19 @@
                                                 <a href="#" class="btn btn-success" data-toggle="tooltip" data-placement="left" data-title="Modificar">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <span data-toggle="tooltip" data-placement="top" data-title="Desactivar">
-                                                    <button type="button" class="btn btn-danger open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#disable" data-action="disable">
-                                                        <i class="fas fa-times-circle"></i>
-                                                    </button>
-                                                </span>
+                                                @if ($Rdegree->status)    
+                                                    <span data-toggle="tooltip" data-placement="top" data-title="Desactivar">
+                                                        <button type="button" class="btn btn-danger open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#disable" data-action="disable">
+                                                            <i class="fas fa-times-circle"></i>
+                                                        </button>
+                                                    </span>
+                                                @else
+                                                    <span data-toggle="tooltip" data-placement="top" data-title="Activar">
+                                                        <button type="button" class="btn btn-info open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#enable" data-action="enable">
+                                                            <i class="fas fa-check"></i>
+                                                        </button>
+                                                    </span>
+                                                @endif
                                             @endif
                                             
                                         </td>
@@ -202,6 +210,7 @@
 
     @include('Campuses.PDF.modalSend')
     @include('Campuses.degrees.disable')
+    @include('Campuses.degrees.enable')
     
     @if (Auth::user()->hasAnyRole('super-admin') || Auth::user()->id == $campus->user_id)
         @include('Campuses.addDegree') 

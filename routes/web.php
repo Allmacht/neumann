@@ -39,6 +39,8 @@ Route::group(['middleware'=>['web','verified','CheckTeacher','role:super-admin|A
     Route::post('/campuses/destroy', 'CampusesController@destroy')->name('campuses.destroy')->middleware('role:super-admin');
     Route::post('/campuses/update/{id}', 'CampusesController@update')->name('campuses.update')->middleware('role:super-admin');
     Route::post('/campuses/assignDegree/{id}', 'CampusesController@assignDegree')->name('campuses.assignDegree')->middleware('role:super-admin|Administrador')->where('id','[0-9]+');
+    Route::post('/campuses/disableDegree', 'CampusesController@disableDegree')->name('campuses.disableDegree')->middleware('role:super-admin|Administrador');
+    Route::post('/campuses/enableDegree', 'CampusesController@enableDegree')->name('campuses.enableDegree')->middleware('role:super-admin|Administrador');
 });
 
 Route::group(['middleware' => ['web','verified','CheckTeacher','role:super-admin|Administrador|Coordinador']], function(){
@@ -56,4 +58,3 @@ Route::group(['middleware' => ['web','verified','CheckTeacher','role:super-admin
 Route::group(['middleware'=>['web','verified','CheckTeacher']] ,function(){
     Route::get('/libraries', 'LibrariesController@index')->name('libraries.index');
 });
-// lo acabo de ver ya esta, ya no es necesario que hahaga las 2 interfaces el middleware se encarga de controlar  ese show si bato mientras este dentro del controlador ok

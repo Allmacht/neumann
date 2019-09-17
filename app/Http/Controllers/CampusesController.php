@@ -260,6 +260,24 @@ class CampusesController extends Controller
             return redirect()->route('campuses.show',['id' => $id])->withStatus('La licenciatura ha sido registrada');
         endif;
     }
+
+    public function disableDegree(Request $request){
+        $chd = CHD::findOrfail($request->id);
+        $campus = $chd->campus_id;
+        $chd->status = false;
+        $chd->update();
+
+        return redirect()->route('campuses.show', ['id' => $campus])->withStatus('Elemento desactivado correctamente');
+    }
+
+    public function enableDegree(Request $request){
+        $chd = CHD::findOrfail($request->id);
+        $campus = $chd->campus_id;
+        $chd->status = true;
+        $chd->update();
+
+        return redirect()->route('campuses.show', ['id' => $campus])->withStatus('Elemento activado correctamente');
+    }
     /**
      * Show the form for editing the specified resource.
      *
