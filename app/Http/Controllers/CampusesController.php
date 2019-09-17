@@ -278,6 +278,14 @@ class CampusesController extends Controller
 
         return redirect()->route('campuses.show', ['id' => $campus])->withStatus('Elemento activado correctamente');
     }
+
+    public function deleteDegree(Request $request){
+        $chd = CHD::findOrfail($request->id);
+        $campus = $chd->campus_id;
+        $chd->delete();
+
+        return redirect()->route('campuses.show', ['id' => $campus])->withStatus('Elemento eliminado correctamente');
+    }
     /**
      * Show the form for editing the specified resource.
      *

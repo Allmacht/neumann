@@ -179,7 +179,7 @@
                                                 </a>
                                                 @if ($Rdegree->status)    
                                                     <span data-toggle="tooltip" data-placement="top" data-title="Desactivar">
-                                                        <button type="button" class="btn btn-danger open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#disable" data-action="disable">
+                                                        <button type="button" class="btn btn-warning open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#disable" data-action="disable">
                                                             <i class="fas fa-times-circle"></i>
                                                         </button>
                                                     </span>
@@ -190,6 +190,12 @@
                                                         </button>
                                                     </span>
                                                 @endif
+
+                                                <span data-toggle="tooltip" data-placement="right" data-title="Eliminar">
+                                                    <button type="button" class="btn btn-danger open-modal" data-id="{{$Rdegree->id}}" data-toggle="modal" data-target="#delete" data-action="delete">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </span>
                                             @endif
                                             
                                         </td>
@@ -211,6 +217,7 @@
     @include('Campuses.PDF.modalSend')
     @include('Campuses.degrees.disable')
     @include('Campuses.degrees.enable')
+    @include('Campuses.degrees.delete')
     
     @if (Auth::user()->hasAnyRole('super-admin') || Auth::user()->id == $campus->user_id)
         @include('Campuses.addDegree') 
