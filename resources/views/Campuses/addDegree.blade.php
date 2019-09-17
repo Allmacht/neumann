@@ -22,7 +22,7 @@
                         <select name="user_id" class="form-control" required>
                             <option value="" selected disabled>Seleccione un Coordinador</option>
                             @foreach ($users as $user)
-                                @if ($user->hasAnyRole('super-admin'))
+                                @if ($user->hasAnyRole('Coordinador'))
                                     <option value="{{$user->id}}">{{$user->names." ".$user->paternal_surname." ".$user->maternal_surname}}</option>
                                 @endif
                             @endforeach
